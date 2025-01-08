@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>meu sistema web</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div id="topo">
+        <h1>Seja bem-vindo ao meu sistema</h1>
+        <h2>Renê de Sousa</h2>
+    </div>
+    <div id="corpo">
+        <p>Saiba se você foi convidado para minha festa</p>
+        <form action="/verificarconvite" method="POST">
+            <label>Digite seu nome</label>
+            <input id="nomeuser" name="nomeuser" type="text">
+            <br>
+            <label>Digite sua senha</label>
+            <input id="idadeuser" name="idadeuser" type="password">
+            <br>
+            <button id="botaoenviar" type="submit" onclick="validar()">Verificar</button>
+        </form>
+
+    </div>
+    <p id="mensagem"></p>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

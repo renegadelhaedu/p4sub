@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>IFPB</title>
+      <link rel="stylesheet" href="../static/thaystyle.css">
+   </head>
+   <body>
+
+
+    <div class= "foto">
+    <img src="{{ url_for('static', filename='imagens/ifpbsousa.png') }}" width="100%" height="300px">
+
+      <h1>SUBSEQUENTE P4</h1>
+      </div>
+      <div class= "exemplo">
+      <h2> BEM-VINDO! <b>
+        </b> </h2>
+      <p>Alunos assíduos do 3° período de informática</p>
+      </div>
+
+      <div class="pai">
+         <div class="exemplo2">
+        <b><a href="https://www.ifpb.edu.br/"> PORTAL IFPB </a></b>
+        <br> <br> <b><a href="https://www.ifpb.edu.br/ti/acesso-a-sistemas"> SUAP</a> </b>
+        <br><br><b> <a href="https://presencial.ifpb.edu.br/login/index.php">MOODLE </a> </b>
+         </div>
+
+         <div class="turma">
+           <a>  ALUNOS 2023.1 </a>
+           <br>
+           <p id="turma" > Deixe uma nota sobre a turma. </p>
+           <input type="text" id="texto">
+           <br>
+           <button id="clicar"> adicionar texto </button>
+         </div>
+
+      <div class="novo">
+          <div>
+              <form action="/inseriraluno" method="post">
+                <a><b>Cadastrar Aluno</b></a>
+                <hr>
+                  <label>Nome</label>
+                <input type="text" name="nome">
+                  <br>
+                <label>Login</label>
+                <input type="text" name="login">
+                <br>
+                <label>Senha</label>
+                <input type="password" id="senha1" name="senha1">
+                <br>
+                <label>Repetir senhaLogin</label>
+                <input type="password" id="senha2" name="senha2">
+                <br>
+                <button onclick="entrar()" type="submit"> Cadastrar </button>
+                <p id="mensagem">{{mensagem}} </p>
+            </form>
+          </div>
+          <div class="login">
+              <form action="/login" method="post">
+                    <a><b>Fazer Login Aluno</b></a>
+                    <hr>
+                    <label>Digite o login</label>
+                    <input type="text" name="login">
+                    <br>
+                    <label>Digite a Senha</label>
+                    <input type="password" name="senha">
+                    <br>
+                    <button type="submit">Enviar</button>
+
+              </form>
+              <p>{{msglogin}} </p>
+          </div>
+
+      </div>
+      </div>
+
+      <div class="footer">
+            <a>Entre em contato com a turma do P4 subsequente</a>
+      </div>
+
+      <script src="js/newfile.js"> </script>
+
+      <script src="js/thayscript.js"> </script>
+
+
+</body>
+</html>
