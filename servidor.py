@@ -4,7 +4,7 @@ import dao
 
 #criando o servidor flask (back-end)
 app = Flask(__name__)
-app.secret_key = 'ren876876423@$42'
+app.secret_key = 'sdfhsdjfg345@$42'
 
 @app.route('/')
 def pageprincipal():
