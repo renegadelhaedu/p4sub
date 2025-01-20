@@ -64,6 +64,6 @@ def login():
         return render_template('homeifpb.html', msglogin=msg)
 
 
-#iniciando/rodando o servidor
+
 if __name__ == '__main__':
     app.run(debug=True)

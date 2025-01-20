@@ -4,10 +4,15 @@ import psycopg2
 #provê conexao com o banco de dados
 def conectardb():
     con = psycopg2.connect(
-        host='localhost',
-        database='ifpbsubp4',
-        user='postgres',
-        password='12345'
+        #host='localhost',
+        #database='ifpbsubp4',
+        #user='postgres',
+        #password='12345'
+
+        host = 'dpg-cu798q23esus73fhp800-a.oregon-postgres.render.com',
+        database = 'projetodaminhavida',
+        user = 'projetodaminhavida_user',
+        password = 'KQnjL1KdQ0Zsx2rn75FKcf4FAh7WVSt5'
     )
     return con
 
