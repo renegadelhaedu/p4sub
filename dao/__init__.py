@@ -66,6 +66,36 @@ def inserirusuario(matricula, nome, senha):
     conexao.close()
     return exito
 
+
+def inserir_disciplina(nome_disciplina, login):
+    #método para conectar o banco de dados, retornando a conexao com o BD
+    conexao = conectardb()
+    cur = conexao.cursor()
+    exito = False
+    try:
+        sql = f"INSERT INTO disciplinasaluno (nome_disciplina, login) VALUES ('{nome_disciplina}', '{login}')"
+        cur.execute(sql)
+    except psycopg2.Error:
+        conexao.rollback()
+        exito = False
+    else:
+        conexao.commit()
+        exito = True
+
+    conexao.close()
+    return exito
+
+def listar_disciplinas(login):
+    conexao = conectardb()
+
+    cur = conexao.cursor()
+    cur.execute(f"SELECT nome_disciplina FROM disciplinasaluno WHERE login = '{login}'")
+    recset = cur.fetchall()
+    conexao.close()
+
+    return recset
+
+
 def listarpessoas(opcao):
     conexao = conectardb()
 

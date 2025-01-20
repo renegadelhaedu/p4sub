@@ -10,17 +10,6 @@ app.secret_key = 'sdfhsdjfg345@$42'
 def pageprincipal():
     return render_template('homeifpb.html')
 
-@app.route('/inserirnovadisciplina', methods=['POST'])
-def cadastrar_disciplina():
-    nome_disc = request.form.get('nomedisciplina')
-    print(session['login'])
-    disciplinas = session['carrinho']
-    disciplinas.append(nome_disc)
-    session['carrinho'] = disciplinas
-    print(session['carrinho'])
-    print('a disciplina foi: ', nome_disc)
-    return '<h1>Disciplina inserida com Sucesso!</h1>'
-    #tem que fazer uma página html para exibir o retorno
 
 @app.route('/sair')
 def fazer_logout():
@@ -28,12 +17,27 @@ def fazer_logout():
     return render_template('homeifpb.html')
 
 
-@app.route('/adicionardisciplina')
-def aaa():
-    if 'login' in session:
-        return render_template('adicionardisciplina.html')
+@app.route('/adicionardisciplina', methods=['POST', 'GET'])
+def inserir_disciplina():
+
+    if request.method == 'POST':
+        nome_disciplina = request.form.get('nomedisciplina')
+        login_aluno = session['login']
+        if dao.inserir_disciplina(nome_disciplina, login_aluno):
+            return '<h1>disciplina inserida com sucesso</h1>'
+        else:
+            return '<h1>Problema ao inserir disciplina</h1>'
+
     else:
-        return render_template('homeifpb.html')
+        return render_template('adicionardisciplina.html')
+
+
+@app.route('/listardisciplinas')
+def listar_disciplinas():
+    disciplinas = dao.listar_disciplinas(session['login'])
+
+    return render_template('listardisciplinas.html', lista=disciplinas)
+
 
 @app.route('/inseriraluno', methods=['POST'])
 def inserir_user():
