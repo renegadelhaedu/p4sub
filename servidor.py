@@ -6,6 +6,12 @@ import dao
 app = Flask(__name__)
 app.secret_key = 'sdfhsdjfg345@$42'
 
+
+#from rotas.usuarios import  usuarios_bp
+
+#app.register_blueprint(usuarios_bp, url_prefix="/usuariosx")
+
+
 @app.route('/')
 def pageprincipal():
     return render_template('homeifpb.html')
