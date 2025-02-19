@@ -1,4 +1,6 @@
 import psycopg2
+from psycopg2.extras import RealDictCursor
+
 
 #para acessar o banco de dados, eu preciso de uma conexao.
 #provê conexao com o banco de dados
@@ -87,20 +89,18 @@ def inserir_disciplina(nome_disciplina, login):
 
 def listar_disciplinas(login):
     conexao = conectardb()
-
     cur = conexao.cursor()
     cur.execute(f"SELECT nome_disciplina FROM disciplinasaluno WHERE login = '{login}'")
     recset = cur.fetchall()
     conexao.close()
-
     return recset
 
 
-def listarpessoas(opcao):
+def listarpessoas():
     conexao = conectardb()
-
-    cur = conexao.cursor()
-    cur.execute(f"SELECT * FROM usuario")
+    #estava assim: cur = conexao.cursor()
+    cur = conexao.cursor(cursor_factory=RealDictCursor)
+    cur.execute(f"SELECT * FROM usuarios")
     recset = cur.fetchall()
     conexao.close()
 

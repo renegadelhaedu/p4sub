@@ -67,6 +67,14 @@ def login():
         msg = 'Senha ou login incorretos'
         return render_template('homeifpb.html', msglogin=msg)
 
+#-----------------------API métodos
+
+@app.route('/listarusuarios')
+def listar_usuarios():
+    listaUsuarios = dao.listarpessoas()
+
+    #jsonify converte a lista de itens para o formato JSON
+    return jsonify(listaUsuarios), 200
 
 
 if __name__ == '__main__':
